@@ -1,0 +1,133 @@
+body {
+  background-color: aliceblue;
+  color: #333333;
+  font-family: arial;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 0 px;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  max-width: 500px;
+  margin: auto;
+  flex-grow: 1;
+}
+
+footer {
+  margin: auto;
+  color: #888888;
+  border-top: 1px solid #eeeeee;
+  margin-top: 16px;
+  padding: 16px 0;
+  align-items: center;
+}
+
+header {
+  margin-top: 16px;
+  margin-bottom: 48px;
+  align-items: center;
+}
+
+h1 {
+  font-size: 64px;
+  margin-bottom: 10px;
+}
+
+header a {
+  color: #888888;
+  margin-right: 16px;
+  text-decoration: none;
+}
+
+hr {
+  border-style: dotted;
+  border-top-style: none;
+  border-width: 4px;
+  width: 50%;
+  border-color: rgb(23, 4, 41);
+
+  border-right-style: none;
+  border-left-style: none;
+}
+
+.portrait {
+  width: 250px;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 30px;
+  background-color: #f4511e;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 18px;
+  padding: 10px;
+  width: 180px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button:hover {
+  background-color: pink; /* Green */
+  color: white;
+}
+
+input[type="text"] {
+  background-color: white;
+  background-image: url("img/search.png");
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+  transition: width 1s ease-in-out;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+}
+
+input[type="text"]:focus {
+  border: none;
+  background-color: rgb(255, 255, 255);
+  width: 55%;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid pink;
+  border-bottom: 16px solid #f4511e;
+  width: 12px;
+  height: 10px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 0.3s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.hidden {
+  display: none;
+}
