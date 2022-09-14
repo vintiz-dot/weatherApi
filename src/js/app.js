@@ -2,8 +2,10 @@ const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
 const app = express();
+const port = process.env.PORT || 3000;
 const geocode = require("../../src/utils/geocode");
 const forcast = require("../../src/utils/forcast");
+const { env } = require("process");
 
 const publicFolder = path.join(__dirname, "../../public");
 const viewPath = path.join(__dirname, "../../templates/views");
@@ -74,6 +76,6 @@ app.get("/weather/*", (_req, res) => {
   res.send(`<p>Please read the documentation</p>`);
 });
 
-app.listen(3000, () => {
-  console.log("server started sucessfully on port 3000");
+app.listen(port, () => {
+  console.log("server started sucessfully on port ", `${port}`);
 });
