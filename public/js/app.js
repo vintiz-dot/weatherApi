@@ -7,14 +7,12 @@ document.getElementById("submit").addEventListener("click", function (x) {
   const address = document.querySelector("#input").value;
   document.querySelector("#input").value = "";
 
-  fetch(`http://localhost:3000/weather?address=${address}&unit=f`).then(
-    (res) => {
-      res.json().then((data) => {
-        if (data.err) return displayError(data);
-        displayWeather(data);
-      });
-    }
-  );
+  fetch(`/weather?address=${address}&unit=f`).then((res) => {
+    res.json().then((data) => {
+      if (data.err) return displayError(data);
+      displayWeather(data);
+    });
+  });
 });
 
 const displayWeather = function (data) {
