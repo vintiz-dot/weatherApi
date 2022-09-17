@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node src/js/app.js"
+    "start": "node src/js/app.js",
+    "heroku":"git push heroku master"
   },
   "keywords": [],
   "author": "",
