@@ -1,8 +1,14 @@
+require("dotenv").config();
 const request = require("postman-request");
 function geocode(address, callback) {
+  const urlParamsObj = {
+    limit: 1,
+    access_token: process.env.geocodekey,
+  };
+  const urlParam = new URLSearchParams(urlParamsObj);
   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
     address
-  )}.json?limit=1&access_token=pk.eyJ1IjoidmludGl6IiwiYSI6ImNsN3E5Z2lzejAzYTQzcHNhOG14czR6aXQifQ.XuWMJW9fOdC59dGbIeR9Fg`;
+  )}.json?${urlParam}`;
 
   request({ url, json: true }, function (err, res) {
     const data = res?.body;
