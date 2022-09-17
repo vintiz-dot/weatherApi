@@ -15,7 +15,7 @@ const forcast = function (address, callback, units = "metric") {
   const url = `https://api.openweathermap.org/data/2.5/weather?${searchParam}`;
   const airPollutionUrl = `http://api.openweathermap.org/data/2.5/air_pollution?${searchParam}`;
 
-  console.log("url", airPollutionUrl);
+  // console.log("url", airPollutionUrl);
 
   request({ url, json: true }, function (_err, res) {
     const data = res?.body;

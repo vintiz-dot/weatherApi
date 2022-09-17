@@ -52,7 +52,7 @@ app.get("/weather", (req, res) => {
         data.center,
         function (err, resp = {}) {
           if (err) return res.send(err);
-          console.log("resp", resp);
+          // console.log("resp", resp);
 
           const weather_descriptions = resp.data.weather[0].description;
           const unit = req.query.units;
