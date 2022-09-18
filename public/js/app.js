@@ -7,7 +7,7 @@ document.getElementById("submit").addEventListener("click", function (x) {
   spin?.classList.remove("hidden");
   const address = document.querySelector("#input").value;
   document.querySelector("#input").value = "";
-  if (!address) return error();
+//   if (!address) return error();
   fetch(`/weather?address=${address}&units=metrics`).then((res) => {
     res.json().then((data) => {
       if (data.err) return displayError(data);
