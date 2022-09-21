@@ -52,6 +52,11 @@ getPosition().then((locate) => {
 
   map.on("click", (event) => {
     current.innerHTML = "";
+    btnSumit.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+      inline: "nearest",
+    });
     btnSumit.classList.remove("hidden");
     lon = event.lngLat.lng;
     lat = event.lngLat.lat;
