@@ -1,21 +1,18 @@
 require("dotenv").config();
 const request = require("postman-request");
 const forcast = function (address, callback, units = "metric") {
-  // const [lon, lat] = address;
-  const [lon, lat] = address;
+  const [lon, lat] = address.split(",");
   const paramsOBJ = {
-    lat,
-    lon,
+    lat: +lat,
+    lon: +lon,
     appid: process.env.forcastkey,
     units,
   };
 
   const searchParam = new URLSearchParams(paramsOBJ);
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?${searchParam}`;
-  const airPollutionUrl = `http://api.openweathermap.org/data/2.5/air_pollution?${searchParam}`;
-
-  // console.log("url", airPollutionUrl);
+  const url = `${process.env.weatherLink}${searchParam}`;
+  const airPollutionUrl = `${process.env.airPollution}${searchParam}`;
 
   request({ url, json: true }, function (_err, res) {
     const data = res?.body;

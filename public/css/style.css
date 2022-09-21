@@ -2,16 +2,11 @@ body {
   background-color: aliceblue;
   color: #333333;
   font-family: arial;
-  max-width: 650px;
-  margin: 0 auto;
-  padding: 0 px;
-
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  max-width: 95%;
+  margin: auto;
 }
 
-.main-content {
+.main-contentt {
   max-width: 500px;
   margin: auto;
   flex-grow: 1;
@@ -79,7 +74,7 @@ hr {
   color: white;
 }
 
-input[type="text"] {
+/* input[type="text"] {
   background-color: white;
   background-image: url("img/search.png");
   background-position: 10px 10px;
@@ -91,13 +86,13 @@ input[type="text"] {
   border-radius: 12px;
   font-size: 16px;
   padding: 12px 20px 12px 40px;
-}
+} */
 
-input[type="text"]:focus {
+/* input[type="text"]:focus {
   border: none;
   background-color: rgb(255, 255, 255);
   width: 55%;
-}
+} */
 
 .loader {
   border: 16px solid #f3f3f3;

@@ -1,3 +1,5 @@
+require("dotenv").config();
+const mapboxgl = require("mapbox-gl");
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
@@ -39,63 +41,48 @@ app.get("/weather", (req, res) => {
   if (!req.query.address) {
     return res.send(`<h1>You must include an address</h1>`);
   }
-  geocode(req.query.address.toUpperCase(), function (err, data) {
-    if (err) {
-      return res.send(err);
-    }
 
-    if (data) {
-      if (!req.query.unit) {
-        req.query.units = "metric";
-      }
-      forcast(
-        data.center,
-        function (err, resp = {}) {
-          if (err) return res.send(err);
-          // console.log("resp", resp);
+  forcast(
+    req.query.address,
+    function (err, resp = {}) {
+      if (err) return res.send(err);
 
-          const weather_descriptions = resp.data.weather[0].description;
-          const unit = req.query.units;
-          const time = new Date();
-          const humidity = resp.data.main.humidity;
-          const {
-            temp: temperature,
-            feels_like: feelslike,
-            temp_min: minTemp,
-            temp_max: maxTemp,
-          } = resp.data.main;
-          const airIndex = {
-            1: "Good",
-            2: "Fair",
-            3: "Moderate",
-            4: "Poor",
-            5: "Very Poor",
-          };
-          res.send({
-            humidity,
-            minTemp,
-            maxTemp,
-            weatherDescription: `${weather_descriptions}`,
-            currentTemperature: `${temperature}`,
-            feelsTemperature: `${feelslike}`,
-            units: `${
-              unit === "metric"
-                ? "degress celcius"
-                : unit === "imperial"
-                ? "degress farenheit"
-                : "Standard Units"
-            }`,
-            region: `${resp.data.name}`,
-            time,
-            airPollution:
-              Object.values(airIndex)[resp.data.airPollution - 1] ||
-              "Unavalable at this point",
-          });
-        },
-        req.query.units
-      );
-    }
-  });
+      const weather_descriptions = resp.data.weather[0].description;
+      const unit = req.query.units;
+      const time = new Date();
+      const humidity = resp.data.main.humidity;
+      const {
+        temp: temperature,
+        feels_like: feelslike,
+        temp_min: minTemp,
+        temp_max: maxTemp,
+      } = resp.data.main;
+      const airIndex = {
+        1: "Good",
+        2: "Fair",
+        3: "Moderate",
+        4: "Poor",
+        5: "Very Poor",
+      };
+      res.send({
+        humidity,
+        minTemp,
+        maxTemp,
+        weatherDescription: `${weather_descriptions}`,
+        currentTemperature: `${temperature}`,
+        feelsTemperature: `${feelslike}`,
+        units: `${
+          unit === "metric" ? "°C" : unit === "imperial" ? "°F" : "°K"
+        }`,
+        region: `${resp.data.name}`,
+        time,
+        airPollution:
+          Object.values(airIndex)[resp.data.airPollution - 1] ||
+          "Unavalable at this point",
+      });
+    },
+    req.query.units
+  );
 });
 
 app.get("/weather/*", (_req, res) => {

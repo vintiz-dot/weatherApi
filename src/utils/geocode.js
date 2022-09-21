@@ -6,7 +6,7 @@ function geocode(address, callback) {
     access_token: process.env.geocodekey,
   };
   const urlParam = new URLSearchParams(urlParamsObj);
-  const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
+  const url = `${process.env.geocode}${encodeURIComponent(
     address
   )}.json?${urlParam}`;
 

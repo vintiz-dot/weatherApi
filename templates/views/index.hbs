@@ -1,38 +1,58 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />   
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Weather API</title>
-    
+    <link
+      href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">   
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+          
     <link rel="stylesheet" href="./css/style.css" />
-     <link rel="icon" type="image/x-icon" href="https://weatherstack.com/site_images/weatherstack_icon.png">
-     {{!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> --}}
-    
+    <link rel="icon" type="image/x-icon" href="src\js\weather.png">     
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <script defer src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
+      <script defer src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+      <script defer src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+      <script defer src="/js/app.js"></script>
+      <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <style>
+    #map {
+      position: flex;
+      top: 0%;
+      bottom: 0%;
+    }
+    </style>
   </head>
-  <body>
-  <section  class="main-content" style="
-    margin-bottom: -20%;
-">
-    {{>header}} <br><br>
-  </section>
-  
-    <div class="main-content" id="weather"></div><div class="main-content" > <div id="spin" class="hidden">
-        <div class="loader"></div>
-        <p>loading</p>
-      </div></div>
+
+  <body> 
+    <section class="container-fluid">
+     <div style="padding-left: 50px;" >{{>header}}</div> 
     
-    
-    <div class="main-content">
-      <p style="margin-left: 48px;">Use this website to get your weather information</p> 
-      <form action="/">
-        <input id='input' class="input" type="text" placeholder="Enter Location">
-        <button id="submit" type="submit" class="button" style="vertical-align:middle">Get Weather</button>
-      </form>    
-    </div>
-   
-  <script defer src="/js/app.js"></script>
-    
-  </body>
-  {{>footer}}
+      <div class="row" style="padding-left: 5%;">
+          <div
+        style="height: 30rem"
+        class="col-sm-12 col-md-6 col-lg-8"
+        id="map"
+      ></div>
+        <div class="col-sm-12 col-md-6 col-lg-4" style="margin: top 20px;margin: auto; text-align: center;">                   
+            <button
+              id="submit"
+              type="submit"
+              class="button hidden"
+              style="vertical-align: middle"      
+              disabled
+            >Get Weather</button>        
+          
+            <div id="weather"><p id="current">Click on the location in the map; then click the get weather button</p></div>
+          <div id="spin" class="hidden loader align-items-center justify-content-center" style="margin: 50%;"></div>
+          <div class="hidden"><p>loading</p></div>
+        </div>
+      </div>
+    </section>
+  </body><div style="margin-left: 40%;"> {{>footer}}</div>
+ 
 </html>
