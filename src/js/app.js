@@ -34,7 +34,7 @@ app.get("/about", (_req, res) => {
 });
 
 app.get("/help", (_req, res) => {
-  res.render("help", { msg: `help has been rendered`, title: "Help Page" });
+  res.render("help", { msg: `Help has been rendered`, title: "Help Page" });
 });
 
 app.get("/weather", (req, res) => {
@@ -87,6 +87,13 @@ app.get("/weather", (req, res) => {
 
 app.get("/weather/*", (_req, res) => {
   res.send(`<p>Please read the documentation</p>`);
+});
+
+app.get("/*", (_req, res) => {
+  res.render("about", {
+    title: "404 Page",
+    errorMessage: `This is a native web app designed to make your life easy. The page you are looking for doesn't exist`,
+  });
 });
 
 app.listen(port, () => {

@@ -72,6 +72,11 @@ getPosition().then((locate) => {
         .then((data) => {
           if (data.err) return displayError(data);
           displayWeather(data, data.region);
+          current.scrollIntoView({
+            behavior: "smooth",
+            block: "end",
+            inline: "nearest",
+          });
           // return data.json()
         })
         .catch((err) => displayError(err))
