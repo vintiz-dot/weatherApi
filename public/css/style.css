@@ -1,5 +1,5 @@
 body {
-  background-color: aliceblue;
+  background-color: white;
   color: #333333;
   font-family: arial;
   max-width: 95%;
@@ -124,5 +124,5 @@ hr {
 }
 
 .hidden {
-  display: none;
+  opacity: 0;
 }

@@ -38,14 +38,14 @@ app.get("/help", (_req, res) => {
 });
 
 app.get("/weather", (req, res) => {
-  if (!req.query.address) {
-    return res.send(`<h1>You must include an address</h1>`);
-  }
+  // if (!req.query.address) {
+  //   return res.send({ data: `<h1>You must include an address</h1>` });
+  // }
 
   forcast(
     req.query.address,
     function (err, resp = {}) {
-      if (err) return res.send(err);
+      if (err || !resp.data.weather) return res.send(err);
 
       const weather_descriptions = resp.data.weather[0].description;
       const unit = req.query.units;

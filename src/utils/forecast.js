@@ -33,10 +33,11 @@ const forcast = function (address, callback, units = "metric") {
 
 const airPollutionIndex = function (err, res, data, callback) {
   if (err) return callback(undefined, { data });
-  if (res) {
+  if (res.body.list) {
     data.airPollution = res.body.list[0].main.aqi;
     return callback(undefined, { data });
   }
+  return callback(undefined, { data });
 };
 
 module.exports = forcast;
